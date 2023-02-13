@@ -12,7 +12,7 @@ webTokenRoute.post('/getToken',(req,res)=>{
     if(clientId===DEFAULT_CLIENT_ID){
 
         const client = {id : clientId}
-        const accessToken = jwt.sign(client,SIGNING_KEY,{ expiresIn: 15*60 })
+        const accessToken = jwt.sign(client,SIGNING_KEY,{ expiresIn: 60*60 })
         return res.status(200).json({accessToken:accessToken})
               
     }else{

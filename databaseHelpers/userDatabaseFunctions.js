@@ -8,17 +8,17 @@ function saveUser(data,res){
 
    const err = helpers.validateUserRequest(data)
    if(err.length!=0){
-    return res.json({error:err})
+    return res.status(400).json({error:err})
    }
 
 
    userDB.findOne({email:data.email},function(err,result){
         if(err){
             console.log(err)
-            return res.json({error:err})
+            return res.status(500).json({error:err})
         }
         if(result){
-            return res.json({status:"SUCCESS",message:`User already exists with email ${result.email}.`})
+            return res.status(201).json({status:"SUCCESS",message:`User already exists with email ${result.email}.`})
         }
 
         const newUser = new userDB
@@ -30,7 +30,7 @@ function saveUser(data,res){
         newUser.save(function(err,result){
             if(err){
                 console.log(err)
-                return res.json({error:err})
+                return res.status(500).json({error:err})
             }
             email.sendEmail(result.email,result.name)
             return res.json({status:"SUCCESS",message:`User successfully created with id ${result._id}.`})
@@ -97,7 +97,8 @@ function updateUser(data,res){
 function validateUser(email,password,res){
      
     if(!email && !password){
-        return res.json({status:"FAILURE",message:"Invalid Response."}) 
+        console.log("Invalid login request values")
+        return res.status(400).json({status:"FAILURE",message:"Input Incorrect. Please enter email and password again."}) 
     }
 
     const filter = {
@@ -111,13 +112,13 @@ function validateUser(email,password,res){
         }
 
         if(!result){
-            return res.json({status:"FAILURE",message:"Please Sign Up."}) 
+            return res.status(400).json({status:"FAILURE",message:"Please Sign Up."}) 
         }
         
         try{
             const same = bcrypt.compareSync(password,result.password)
             if(!same){
-                return res.json({status:"FAILURE",message:"User Verification Failed. Please fill your current password correctly."})
+                return res.status(400).json({status:"FAILURE",message:"User Verification Failed. Please fill your current password correctly."})
             }
         }catch(err){
             console.log(err)
