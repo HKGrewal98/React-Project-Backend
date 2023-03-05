@@ -6,19 +6,25 @@ const OrderSchema = new Schema({
     address : {
         city:String,
         street:String,
-        postalCode:String,
+        postal:String,
         houseNo:String
     },
     totalAmount:Number,
     isCompleted:Boolean,
     order:[
         {
-            itemId:String,
+            id:String,
             amount:Number,
             price:Number
         }
-    ]
-
+    ],
+    payment:{
+         name:String,
+         cardNumber:String,
+         cvv:String,
+         expiry:String,
+         paymentMode:String
+    }
  },{collection:'orders'})
 
  module.exports = {

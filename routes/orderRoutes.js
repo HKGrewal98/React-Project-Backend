@@ -4,8 +4,9 @@ const orderDB = require('../databaseHelpers/orderDatabaseFunctions')
 const orderRoute = express.Router()
 
 
-orderRoute.post("/",validateToken,(req,res)=>{
-    return orderDB.saveOrder(req.body,res)
+orderRoute.post("/",validateToken,async (req,res)=>{
+    console.log(req.body)
+    return await orderDB.saveOrder(req.body,res)
 })
 
 module.exports = orderRoute

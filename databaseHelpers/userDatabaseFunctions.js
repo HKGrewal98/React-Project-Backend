@@ -138,4 +138,11 @@ function validateUser(email,password,res){
 
 }
 
-module.exports = {saveUser,updateUser,updatePassword,validateUser}
+
+async function getUser(id){
+    const result = await userDB.findById(id)
+    console.log(result)
+    return result
+}
+
+module.exports = {saveUser,updateUser,updatePassword,validateUser,getUser}

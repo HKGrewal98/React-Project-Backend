@@ -1,53 +1,43 @@
 const orderDB = require("../models/orders").orders;
-const paymentDB = require("../models/payment").payment;
+const userDB = require('./userDatabaseFunctions')
 const { sendOrderConfirmation } = require("../authenticate/sendEmail");
 
-function saveOrder(data, res) {
-  const order = new orderDB();
+async function saveOrder(data, res) {
 
-  const orderStatus = "FALSE",
-    paymentStatus = "FALSE";
+  const {houseNo,street,postal,city} = data.orderAddress
+  if(data.user.id === '' || houseNo === '' , street === '' ||
+     postal === '' || city === '' || data.userOrder.length===0 || data.totalAmount===0){
+      return res.status(400).json({status:"FAILURE",message:"Order Incomplete.Please select the food items from the menu."})
+     }
 
-  order.customerId = data.id;
-  order.address = data.address;
-  order.totalAmount = data.totalAmount;
-  order.isCompleted = data.isCompleted;
-  order.order = data.order;
+  try{
+     
+    const order = new orderDB
+    order.customerId = data.user?.id
+    order.address = data.orderAddress
+    order.totalAmount = data.totalAmount
+    order.isCompleted = true
+    order.order = data.userOrder
+    order.payment = data.payment
 
-  order.save(function (err, result) {
-    if (err) {
-      console.log(err);
-      return res.json({ error: err });
-    }
-    sendOrderConfirmation("grewalharkanwal36@gmail.com", data.order);
-    orderStatus = "SUCCESS";
-  });
+    order.save(async function(err,result){
+      if(err){
+         console.log(err)
+         return res.status(500).json({status:"FAILURE",message:err.message})
+      }
+      console.log(result)
+      const userInfo = await userDB.getUser(data.user.id)
+      sendOrderConfirmation(data.user.email,data.userOrder,data.totalAmount)
+      console.log(userInfo)
+      return res.json({status:"SUCCESS",message:`Order created successfully with id ${result._id}.`})
+    })
 
-  const pay = new paymentDB();
-  pay.customerId = data.id;
-  pay.cardNumber = data.cardNumber;
-  pay.cardExpiry = data.expiry;
-  pay.cardCvv = data.cvv;
-  pay.amount = data.totalAmount;
-  pay.modeOfPayment = data.mode;
-  pay.dateOfPayment = data.date;
 
-  pay.save(function (err, result) {
-    if (err) {
-      console.log(err);
-      return res.json({ error: err });
-    }
-    paymentStatus = "SUCCESS";
-  });
-  if (paymentStatus === "SUCCESS" && orderStatus === "SUCCESS") {
-    res.status(200).json({
-      message: "Payment and Order submitted successfully",
-    });
-  } else {
-    res.status(400).json({
-      message: "Details entered are not valid!",
-    });
+  }catch(error){
+     console.log(err)
+     return res.status(500).json({status:"FAILURE",message:err.message})
   }
+
 }
 
 module.exports = { saveOrder };
