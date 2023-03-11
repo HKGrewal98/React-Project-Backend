@@ -6,6 +6,7 @@ const {webTokenRoute} = require('./routes/webTokenRoutes')
 const userRoutes = require('./routes/userRoutes')
 const orderRoutes = require('./routes/orderRoutes')
 const reviewsRoutes = require('./routes/reviewsRoutes')
+const contactRoutes = require('./routes/contactRoutes');
 
 
 async function serverUp(){
@@ -21,6 +22,7 @@ async function serverUp(){
     app.use('/user',userRoutes)
     app.use('/order',orderRoutes)
     app.use('/reviews',reviewsRoutes)
+    app.use('/contact', contactRoutes);
     app.listen(8080,()=>{
     console.log("Server up and listening at 8080.")
     })
