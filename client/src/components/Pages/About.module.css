@@ -1,0 +1,30 @@
+.card {
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+  background-color: white;
+  text-align: justify;
+  margin-top: 100px;
+  margin-left: 170px;
+  width: 75%;
+}
+.title {
+  color: rgb(197, 62, 62);
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.desc {
+  padding: 0 40px 40px 40px;
+  color: white;
+}
+.aboutImage {
+  background-image: url("../../../public/about.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.sub_desc {
+  background-color: rgba(0, 0, 0, 0.5);
+}

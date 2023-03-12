@@ -1,0 +1,162 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 20px;
+  max-width: 960px;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+  .rform-section,
+  .data-section,
+  .ratings-section {
+    flex-basis: 100%;
+  }
+}
+
+.rform-section {
+  flex-basis: 75%;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: larger;
+}
+
+.review-form{ 
+  color: white;
+  background: red;
+  overflow: hidden;
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 5px 20px 50px #000;
+  background: linear-gradient(to bottom, #706f73, #0c0a1b, #07070c );
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  height: 90%; 
+  width: 100%;
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between; 
+}
+.reviews-section li {
+  color:white;
+}
+.review-form label {
+  color: #fff;
+  justify-content: center;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .5s ease-in-out;
+}
+
+.review-form input[type="text"],
+.review-form select,
+.review-form textarea {
+  border: 1px solid #999;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.review-form select option {
+  color: #333;
+}
+
+.review-form button[type="submit"] {
+  color: #fff;
+  background: rgb(171, 28, 28);
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: .2s ease-in;
+}
+
+.review-form button[type="submit"]:hover {
+  background: rgb(121, 31, 31);
+  cursor: pointer;
+}
+
+.data-section {
+  flex-basis: 100%;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  padding: 2rem;
+}
+
+.data-section h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: red;
+}
+
+.data-section p {
+  color: white;
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.ratings-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  background-color: #3f3f3f !important;
+}
+
+.ratings-table h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: red;
+}
+
+.ratings-table table {
+  width: 100%;
+  color: white;
+  background: red;
+  overflow: hidden;
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 5px 20px 50px #000;
+  background: linear-gradient(to bottom, #706f73, #0c0a1b, #07070c );
+}
+
+.ratings-table th,
+.ratings-table td {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+
+.ratings-table th {
+  color: white;
+}
+
+.ratings-table td.star {
+  font-size: 1.5rem;
+  color: #ffd700;
+}
+
+.ratings-table a {
+  color: red;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 1rem;
+  display: block;
+  text-align: center;
+}
+
+.ratings-table a:hover {
+  color: darkred;
+}
