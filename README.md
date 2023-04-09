@@ -1,3 +1,5 @@
+# react-project-ottomons
+react-project-ottomons created by GitHub Classroom
 
 #### Website Link : https://ottomons.cyclic.app/
 
@@ -8,6 +10,7 @@ example validateUser middlewares, cors,database and express configurations.
 2: Designed order,menu models as well as the api's to fetch menu items as well as order api to submit the user order in the final stage.
 3:Also implemented database functionality to add/delete/update menu items.
 4:Implemented JWT token authorization at backend to regulate access to our backend server.
+5: Also implemented NodeMailer , when a user sign's Up a welcome email is send as well as when the user orders food a email is sending listing all the food items ordered, quantity , price as well as total amount. 
 Frontend:
 1: Created the basic structure of the app , on which team members can built their components.
 2: Created the menu Page , to list all the items. 
