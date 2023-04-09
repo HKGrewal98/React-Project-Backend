@@ -1,5 +1,6 @@
 const menuDB = require('../models/menu').menu
 const helper = require('./utilities')
+const jobsDB = require('../models/Jobs').jobs
 
 
 function getAllMenuItems(res,allItems){
@@ -72,4 +73,24 @@ function deleteItem(id,res){
     })
 }
 
-module.exports = {getAllMenuItems,addNewItem,updateItem,deleteItem}
+async function getAllJobs(res){
+     
+    var response = await jobsDB.find().lean()
+    response = response.map((job) => {
+        var postedDate = new Date()
+        var day = postedDate.getDate() - getRandomNumber()
+        postedDate.setDate(day)
+        return {
+            ...job,
+            postedDate:postedDate.toDateString()
+        }
+    })
+    return res.json(response)
+
+}
+
+function getRandomNumber(){
+    return Math.floor((Math.random()*5)+1)
+}
+
+module.exports = {getAllMenuItems,addNewItem,updateItem,deleteItem,getAllJobs}

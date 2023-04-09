@@ -20,6 +20,10 @@ menuRoute.delete('/deleteItem',validateToken,(req,res)=>{
     return dbMethods.deleteItem(req.body.id,res)
 })
 
+menuRoute.get('/jobs',(req,res)=>{
+    return dbMethods.getAllJobs(res)
+})
+
 menuRoute.all("*",(req,res)=>{
     res.json("Sorry! Endpoint does not exist.")
 })
