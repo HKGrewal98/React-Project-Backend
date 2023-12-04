@@ -1,0 +1,90 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+  }
+
+.content{
+  margin-top: 100px;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content h1{
+  text-align: center;
+  text-shadow: 4px 4px slateblue;
+  color: crimson;
+  font-family: cursive;
+  font-weight: bolder;
+  font-size: 48px;
+}
+
+.inputValue {
+  margin-left: 550px;
+  line-height: 2;
+}
+
+.inputValue label {
+  margin-right: 100px;
+  font-family: cursive;
+  font-weight: bolder;
+  font-size: 24px;
+  text-shadow: 2px 4px yellow;
+  color: blueviolet;
+  margin-top: 40px;
+}
+
+.inputValue input{
+  padding: 5px;
+  width: 300px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bolder;
+  font-size: 18px;
+  color: rgb(93, 0, 255);
+}
+
+.inputValue select{
+  padding: 5px;
+  width: 300px;
+  font-weight: bolder;
+}
+
+.inputValue textarea{
+  height: 150px;
+  width: 500px;
+  margin-top: 30px;
+  font-family: cursive;
+  color: #8a2b06;
+}
+
+.create {
+  background-color: #f5dfd6; 
+  border: none;
+  color: #8a2b06;
+  padding: 10px 40px;
+  width: 300px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 24px;
+  margin-top: 20px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.8s; /* Safari */
+  transition-duration: 0.8s;
+ 
+}
+
+.create:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.backward{
+  margin-left: 400px;
+  font-size: larger;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-weight: bolder;
+  color: black;
+  text-decoration: underline;
+}

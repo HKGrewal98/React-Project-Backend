@@ -9,5 +9,10 @@ orderRoute.post("/",validateToken,async (req,res)=>{
     return await orderDB.saveOrder(req.body,res)
 })
 
+orderRoute.get("/data",async (req,res)=>{
+    const status = req.query.status || 0
+    return res.json(await orderDB.getOrderAnalytics(status))
+})
+
 module.exports = orderRoute
 

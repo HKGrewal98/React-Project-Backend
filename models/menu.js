@@ -5,7 +5,8 @@ const MenuSchema = new Schema({
    name:String,
    description:String,
    price:Number,
-   available:String
+   available:String,
+   resturantId:String
 },{collection:'menu'})
 
 module.exports = {

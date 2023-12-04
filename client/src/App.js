@@ -11,6 +11,10 @@ import Jobs from "./components/Pages/Jobs";
 import ContactUs from "./components/Pages/ContactUs";
 import Root from "./components/Pages/Root";
 import Payment from "./components/Pages/Payment";
+import Admin from "./components/Admin/Admin"
+import AdminHeader from "./components/Pages/AdminHeader";
+import AdminAction from "./components/Admin/AdminAction";
+import AdminStats from "./components/Admin/AdminStats";
 
 function App() {
   useEffect(() => {
@@ -77,6 +81,15 @@ function App() {
         { path: "payment", element: <Payment /> },
       ],
     },
+    {
+      path: "/admin",
+      element: <AdminHeader/>,
+      children: [
+         {index:true, element: <Admin/>},
+         {path:"action", element: <AdminAction/>},
+         {path:"stats",element:<AdminStats/>}
+      ]
+    }
   ]);
 
   return <RouterProvider router={routes} />;

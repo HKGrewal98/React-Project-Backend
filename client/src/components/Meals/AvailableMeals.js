@@ -16,7 +16,7 @@ const AvailableMeals = () =>{
             headers :{
                 "Content-type":"application/json",
                 'Access-Control-Allow-Origin':'*',
-                "Accept": 'application/json',
+                "Accept": 'application/json'
             },
             body:JSON.stringify({"clientId":"frontend"})
             })
@@ -32,7 +32,7 @@ const AvailableMeals = () =>{
               "Content-type":"application/json",
               'Access-Control-Allow-Origin':'*',
               "Accept": 'application/json',
-              "Authorization" : data.accessToken
+              "Authorization":data.accessToken
           }
       })
 

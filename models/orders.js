@@ -24,7 +24,9 @@ const OrderSchema = new Schema({
          cvv:String,
          expiry:String,
          paymentMode:String
-    }
+    },
+    resturantId:String,
+    orderDate:Schema.Types.Date
  },{collection:'orders'})
 
  module.exports = {

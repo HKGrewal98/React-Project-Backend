@@ -15,8 +15,8 @@ async function serverUp(){
     if(state==0){
        process.exit(0)
     }
-    // Parse request bodies as JSON
-    app.use(express.static(path.join(__dirname, "./client/build")))
+    // Parse request bodies as JSON 
+  app.use(express.static(path.join(__dirname, "./client/build")))
     app.use('/menu',menuRoutes)
     app.use('/web',webTokenRoute)
     app.use('/user',userRoutes)

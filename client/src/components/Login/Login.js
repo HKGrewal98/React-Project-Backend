@@ -113,8 +113,12 @@ function Login(){
 				const {id,name,email} = result.user
 				ctx.setLoginedUser(id,name,email)
 				ctx.setUserLogin(true)
+				console.log("isAdmin : " + result.user.isAdmin)
+				if(result.user.isAdmin){
+					navigate("/admin")
+				}else{
 				navigate("/ottomonMenu")
-			 }
+			 }}
 
 		  }catch(error){
 			console.log("Catch")

@@ -69,6 +69,43 @@ function sendOrderConfirmation(to,order,totalAmount){
 
 }
 
+function sendAdminMessage(to,message){
+  const transporter = getTransporter()
+  console.log("Sending mail to Id : " + to)
+  const mailOptions = {
+      from: 'ottomonsfood@gmail.com',
+      to: to,
+      subject: subject,
+      attachments:[{
+        filename:'food.jpg',
+        path:path.join(__dirname,'food.jpg'),
+        cid:'unique@kreata.ee'
+      }],
+      html: getHTMLBodyForAdminMessage(message)
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+
+}
+
+function getHTMLBodyForAdminMessage(message){
+  return `<!DOCTYPE html>
+  <html>
+  <body>  
+      <h3 style="color: green; font-size: 20px;" >Hi,Ottomons Family</h3> 
+      <img src="cid:unique@kreata.ee" alt="ottomons" width="350" height="250">
+      <p>${message}</p>
+  </body>
+  </html>`
+}
+
+
 function getHTMLBodyForOrderConfirmation(order,totalAmount){
        const ul = `<ul> ${order.map((item)=>{
                 return `<li>${item.name} [Amount : ${item.amount} Price : ${item.price}]</li>`
@@ -114,5 +151,5 @@ function getHTMLBody(name){
 }
 
 
-module.exports = {sendEmail,sendOrderConfirmation}
+module.exports = {sendEmail,sendOrderConfirmation,sendAdminMessage}
 

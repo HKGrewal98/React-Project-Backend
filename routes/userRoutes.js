@@ -21,4 +21,9 @@ userRoutes.put('/updatePassword',validateToken,(req,res)=>{
     return userDB.updatePassword(req.body.id,req.body.op,req.body.np,res)
 })
 
+userRoutes.post('/notification',(req,res)=>{
+     userDB.getAllUsers(req.body.message)
+     return res.json({"message":"Email task accepted.","status":"In Progress"})
+})
+
 module.exports = userRoutes

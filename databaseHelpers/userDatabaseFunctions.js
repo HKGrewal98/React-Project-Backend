@@ -2,6 +2,8 @@ const userDB = require('../models/user').users
 const email = require('../authenticate/sendEmail')
 const bcrypt = require('bcrypt')
 const helpers = require('./utilities')
+const emailHelper = require('../authenticate/sendEmail')
+const resturantId = "65348fa2368660f0a932b73e" 
 
 
 function saveUser(data,res){
@@ -26,6 +28,7 @@ function saveUser(data,res){
         newUser.password = bcrypt.hashSync(data.password,10)
         newUser.email = data.email
         newUser.phone = data.phone
+        newUser.isAdmin = false
 
         newUser.save(function(err,result){
             if(err){
@@ -131,11 +134,20 @@ function validateUser(email,password,res){
             id : result._id,
             name : result.name,
             email : result.email,
-            phone : result.phone
+            phone : result.phone,
+            isAdmin: result.isAdmin
         }}) 
     })
 
 
+}
+
+async function getAllUsers(message){
+    console.log(message)
+    let result = await userDB.find({resturantId:"65348fa2368660f0a932b73e"})
+    result.forEach(user => {
+        emailHelper.sendAdminMessage(user.email,message)
+    })
 }
 
 
@@ -145,4 +157,4 @@ async function getUser(id){
     return result
 }
 
-module.exports = {saveUser,updateUser,updatePassword,validateUser,getUser}
+module.exports = {saveUser,updateUser,updatePassword,validateUser,getUser,getAllUsers}

@@ -1,0 +1,16 @@
+.nav {
+    
+}
+
+.nav a{
+    margin-right: 40px;
+    color: white;
+    font-family: cursive;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.nav a:hover{
+    color: blue;
+    background-color: yellow;
+}

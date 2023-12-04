@@ -5,7 +5,9 @@ var UserSchema = new Schema({
     name : String,
     password : String,
     email : String,
-    phone : String
+    phone : String,
+    resturantId:String,
+    isAdmin: Schema.Types.Boolean
 },{collection:'users'})
 
 module.exports = {

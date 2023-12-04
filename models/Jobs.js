@@ -5,7 +5,8 @@ const jobsSchema = new Schema({
     imageUrl:String,
     title:String,
     postedDate:Date,
-    description:String
+    description:String,
+    resturantId:String
  },{collection:'jobs'})
 
  module.exports = {
