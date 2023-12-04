@@ -1,8 +1,8 @@
 const reviewsData = require('../models/reviews');
-
+const resturantId = "65348fa2368660f0a932b73e"
 // Get reviews
 async function getReviews() {
-    return await reviewsData.find();
+    return await reviewsData.find({resturantId:resturantId});
   }
   
   // Add new review

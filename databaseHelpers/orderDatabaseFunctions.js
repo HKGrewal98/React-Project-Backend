@@ -74,7 +74,7 @@ async function getOrderAnalytics(status){
           console.log(details)
           return {
             "totalOrders": details[0].totalOrders,
-            "totalAmount": details[0].totalAmount,
+            "totalAmount": parseFloat(details[0].totalAmount).toFixed(2),
             "sortBycount":await compute(aggregator,sortByCount),
             "sortByamount":await compute(aggregator,sortBySalesAmount)
           }
